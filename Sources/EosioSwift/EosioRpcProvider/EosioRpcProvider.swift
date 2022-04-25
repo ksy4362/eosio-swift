@@ -228,7 +228,7 @@ public class EosioRpcProvider {
     ///   - rpc: String representing endpoint path. E.g., `chain/get_account`.
     ///   - requestParameters: The request object.
     /// - Returns: A Promise fulfilling with a response object conforming to the `EosioRpcResponseProtocol` and rejecting with an Error.
-    func getResource<T: Decodable & EosioRpcResponseProtocol>(_: PMKNamespacer, rpc: String, requestParameters: Encodable?) -> Promise<T> {
+    public func getResource<T: Decodable & EosioRpcResponseProtocol>(_: PMKNamespacer, rpc: String, requestParameters: Encodable?) -> Promise<T> {
 
         /*
          Logic for retry and failover implementation:
@@ -406,7 +406,7 @@ public class EosioRpcProvider {
     ///   - rpc: String representing endpoint path. E.g., `chain/get_account`.
     ///   - requestParameters: The request object.
     ///   - callback: Callback.
-    func getResource<T: Decodable & EosioRpcResponseProtocol>(rpc: String, requestParameters: Encodable?, callback: @escaping (T?, EosioError?) -> Void) {
+    public func getResource<T: Decodable & EosioRpcResponseProtocol>(rpc: String, requestParameters: Encodable?, callback: @escaping (T?, EosioError?) -> Void) {
         getResource(.promise, rpc: rpc, requestParameters: requestParameters)
             .done {
                 callback($0, nil)
