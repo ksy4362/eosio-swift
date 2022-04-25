@@ -18,7 +18,7 @@ public enum EosioResult<Success, Failure: Error> {
     /// The failure return state.
     case failure(Failure)
 
-    init?(success: Success?, failure: Failure?) {
+    public init?(success: Success?, failure: Failure?) {
         if let success = success {
             self = .success(success)
         } else if let failure = failure {
